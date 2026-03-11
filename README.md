@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# SMT Chatbot UI (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the frontend repository of the **PT Solusi Mitra Teknologi (SMT) Chatbot** application. This project provides a clean, responsive, and modern chat interface built with React, connecting directly to our FastAPI/Rasa/Gemini backend.
 
-Currently, two official plugins are available:
+## 🌟 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern UI/UX**: Clean and professional chat interface matching corporate standards.
+- **Real-time Interaction**: Seamless chatting experience with simulated typing indicators for natural flow.
+- **Smart Auto-scroll**: The chat window automatically scrolls down when new messages arrive or keyboard opens.
+- **Responsive Layout**: Designed to work beautifully across desktop and mobile screens.
+- **Markdown & Styling**: Supports line breaks and natural text formatting sent by the AI backend.
 
-## React Compiler
+## 🛠️ Technology Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 18**
+- **Vite** (for blazing fast build and development)
+- **TypeScript**
+- **Tailwind CSS** (via Lucide React icons, standard CSS for layout)
+- **Lucide React** (for modern SVG icons)
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Follow these steps to run the frontend on your local machine.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 1. Prerequisites
+- **Node.js** (v18 or higher recommended)
+- **npm** (comes with Node.js)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 2. Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repository and install dependencies:
+
+```bash
+# Clone the repository (if you haven't already)
+# git clone <your-frontend-repo-url>
+cd frontend-chat
+
+# Install dependencies needed
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Running the Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+To start the Vite development server:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+The application will typically be accessible at `http://localhost:5173`. 
+
+*Note: Ensure that the Backend API (FastAPI & Rasa) is properly running on `http://localhost:8000` so the chatbot can respond to your queries.*
+
+## 📁 Project Structure
+
+```text
+frontend-chat/
+├── src/
+│   ├── components/
+│   │   ├── ChatBubble.tsx    # Individual message component (user & bot)
+│   │   ├── ChatInput.tsx     # Input field and send button
+│   │   └── ChatWindow.tsx    # Main chat container and layout logic
+│   ├── App.tsx               # Root component integrating ChatWindow
+│   ├── main.tsx              # React DOM mounting
+│   └── index.css             # Global CSS and layout utilities
+├── public/                   # Static assets
+├── package.json              # Project dependencies and scripts
+└── vite.config.ts            # Vite configuration
+```
+
+## 🔗 Connecting to Backend
+The frontend is pre-configured to communicate with the local backend running at `http://localhost:8000/chat`. If you need to deploy this to production or change the API URL, search for `localhost:8000` in the `ChatWindow.tsx` file to update the endpoint.
+
+## 📬 Contact / Contribution
+Developed for PT Solusi Mitra Teknologi. For internal use or technical inquiries, please refer to the project maintainers.
